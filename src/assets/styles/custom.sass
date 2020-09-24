@@ -1,6 +1,7 @@
 @import '~bootstrap/scss/bootstrap.scss'
 $white-bg: #F6F8FA
 $purple-base: #865FF5
+$gray: #F0F2F4
 
 .App
   text-align: center
@@ -88,12 +89,35 @@ $purple-base: #865FF5
 .project-render-item
   display: grid
   grid-gap: 20px
-  grid-template: auto / repeat(auto-fit, minmax(200px, 1fr))
+  grid-template: auto / repeat(auto-fit, minmax(250px, 1fr))
+
+.project-button
+  height: 130px
+  background-color: $gray
+  display: flex
+  align-items: center
+  justify-content: center
+  opacity: 0.6
+  transition: 0.3s
+  border-radius: 6px
+  outline: none
+  border: none
+
+  &:focus
+    outline: none
+
+  h4
+    font-size: 14px
+    color: $black
+
+  &:hover
+    opacity: 1
 
 .project-item
-  height: 100px
+  height: 130px
   position: relative
   cursor: pointer
+  border-radius: 6px
 
   &__overlay
     position: absolute

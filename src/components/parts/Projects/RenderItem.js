@@ -1,5 +1,5 @@
 import React from "react";
-import { ProjectItem } from "components/elements";
+import { ProjectItem, ProjectButton } from "components/elements";
 
 const RenderItem = () => {
   return (
@@ -8,6 +8,7 @@ const RenderItem = () => {
       <ProjectItem />
       <ProjectItem />
       <ProjectItem />
+      <ProjectButton />
     </div>
   );
 };
