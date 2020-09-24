@@ -11,12 +11,15 @@ class ProjectDetail extends React.Component {
       <div>
         <Header />
         <div
-          className="container-fluid pt-3"
+          className="container-fluid pt-3 d-flex flex-row overflow-auto"
           style={{
             height: "calc(100vh - 46px)",
             backgroundColor: "#F6F8FA",
+            margin: "0 -15px",
           }}
         >
+          <Tasks />
+          <Tasks />
           <Tasks />
         </div>
       </div>
