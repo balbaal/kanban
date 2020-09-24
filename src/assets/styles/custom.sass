@@ -151,32 +151,41 @@ $gray: #F0F2F4
     font-size: 18px
     font-weight: bold
 
+.task-parent
+  width: 300px
+
 .task-item
   padding: 10px 15px
   background-color: white
+  margin-bottom: 15px
 
   &__header
     display: flex
     flex-direction: row
     align-items: center
     justify-content: space-between
-    margin-bottom: 5px
+    margin-bottom: 10px
 
     &__title
       font-weight: bold
-      font-size: 16
+      font-size: 18px
       color: $gray-600
-      margin-bottom: 5px
+      margin: 0
 
     &__date
       font-size: 14px
       color: $gray-500
+      margin: 0
 
   &__content
     color: $gray-500
     margin-bottom: 5px
     padding-bottom: 5px
     border-bottom: 1px solid $gray-100
+    width: 80%
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis
 
   &__owner
     color: $gray-500

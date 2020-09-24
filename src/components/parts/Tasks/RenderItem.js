@@ -3,9 +3,12 @@ import { TaskItem } from "components/elements";
 
 const RenderItem = () => {
   return (
-    <div>
+    <>
       <TaskItem />
-    </div>
+      <TaskItem />
+      <TaskItem />
+      <TaskItem />
+    </>
   );
 };
 

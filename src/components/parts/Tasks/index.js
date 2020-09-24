@@ -3,7 +3,7 @@ import RenderItem from "./RenderItem";
 
 const Tasks = () => {
   return (
-    <div>
+    <div className="task-parent">
       <RenderItem />
     </div>
   );
