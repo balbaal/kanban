@@ -1,8 +1,16 @@
 import React from "react";
 
+// Components
+import { Header } from "components/parts";
+
 class Projects extends React.Component {
   render() {
-    return <div>Projects Page</div>;
+    return (
+      <div>
+        <Header />
+        Projects Page
+      </div>
+    );
   }
 }
 
