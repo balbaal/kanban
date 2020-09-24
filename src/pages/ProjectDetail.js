@@ -11,7 +11,7 @@ class ProjectDetail extends React.Component {
       <div>
         <Header />
         <div
-          className="container-fluid"
+          className="container-fluid pt-3"
           style={{
             height: "calc(100vh - 46px)",
             backgroundColor: "#F6F8FA",

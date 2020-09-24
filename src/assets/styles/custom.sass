@@ -150,3 +150,34 @@ $gray: #F0F2F4
     position: absolute
     font-size: 18px
     font-weight: bold
+
+.task-item
+  padding: 10px 15px
+  background-color: white
+
+  &__header
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: space-between
+    margin-bottom: 5px
+
+    &__title
+      font-weight: bold
+      font-size: 16
+      color: $gray-600
+      margin-bottom: 5px
+
+    &__date
+      font-size: 14px
+      color: $gray-500
+
+  &__content
+    color: $gray-500
+    margin-bottom: 5px
+    padding-bottom: 5px
+    border-bottom: 1px solid $gray-100
+
+  &__owner
+    color: $gray-500
+    font-size: 14px
