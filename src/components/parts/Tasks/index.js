@@ -1,12 +1,11 @@
 import React from "react";
 import RenderItem from "./RenderItem";
+import { Button } from "components/elements";
 
 const Tasks = () => {
   return (
     <div className="task-parent">
-      <button className="task-parent__button btn btn-md btn-primary w-100 mb-4">
-        + New Task
-      </button>
+      <Button />
       <RenderItem />
     </div>
   );
