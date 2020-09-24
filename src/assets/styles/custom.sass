@@ -62,3 +62,63 @@ $purple-base: #865FF5
 
       &:last-child
         padding-right: 0
+
+.project-parent
+  &__head
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    align-items: center
+    margin-bottom: 15px
+
+    &__title
+      font-size: 18px
+      margin: 0
+      font-weight: bold
+
+    &__button
+      display: flex
+      flex-direction: row
+      align-items: center
+      margin-right: -5px
+
+      button
+        margin: 0 5px
+
+.project-render-item
+  display: grid
+  grid-gap: 20px
+  grid-template: auto / repeat(auto-fit, minmax(200px, 1fr))
+
+.project-item
+  height: 100px
+  position: relative
+  cursor: pointer
+
+  &__overlay
+    position: absolute
+    top: 0
+    right: 0
+    left: 0
+    bottom: 0
+    background-color: $black
+    opacity: 0.4
+    transition: 0.3s
+
+    &:hover
+      opacity: 0.6
+
+  &__img
+    height: 100%
+    width: 100%
+    object-fit: cover
+    border-radius: 6px
+
+  &__title
+    color: white
+    padding: 10px 15px
+    top: 0
+    left: 0
+    position: absolute
+    font-size: 18px
+    font-weight: bold
