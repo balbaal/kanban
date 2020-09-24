@@ -1,7 +1,7 @@
 import React from "react";
 
 // Components
-import { Header } from "components/parts";
+import { Header, Tasks } from "components/parts";
 
 class ProjectDetail extends React.Component {
   render() {
@@ -10,7 +10,15 @@ class ProjectDetail extends React.Component {
     return (
       <div>
         <Header />
-        Project Detail Page: {this.props.match.params.id}
+        <div
+          className="container-fluid"
+          style={{
+            height: "calc(100vh - 46px)",
+            backgroundColor: "#F6F8FA",
+          }}
+        >
+          <Tasks />
+        </div>
       </div>
     );
   }
