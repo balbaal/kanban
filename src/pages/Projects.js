@@ -8,7 +8,7 @@ class Projects extends React.Component {
     return (
       <div>
         <Header />
-        <div className="container">
+        <div className="container mt-3">
           <ProjectsWrap />
         </div>
       </div>
