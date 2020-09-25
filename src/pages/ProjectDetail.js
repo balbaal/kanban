@@ -1,4 +1,5 @@
 import React from "react";
+import { DragDropContext } from "react-beautiful-dnd";
 
 // Components
 import { Header, Tasks, FormTask } from "components/parts";
@@ -10,7 +11,7 @@ class ProjectDetail extends React.Component {
     taskDescription: "",
     data: [
       {
-        id: 1,
+        id: "38888383",
         taskTitle: "Mobile App User Flow",
         taskDescription:
           "This is the brief description of the This is the brief description of the ",
@@ -19,7 +20,7 @@ class ProjectDetail extends React.Component {
         status: "new",
       },
       {
-        id: 2,
+        id: "22255",
         taskTitle: "Mobile App User Flow",
         taskDescription:
           "This is the brief description of the This is the brief description of the ",
@@ -28,7 +29,7 @@ class ProjectDetail extends React.Component {
         status: "new",
       },
       {
-        id: 3,
+        id: "3355555",
         taskTitle: "Mobile App User Flow",
         taskDescription:
           "This is the brief description of the This is the brief description of the ",
@@ -80,9 +81,21 @@ class ProjectDetail extends React.Component {
             margin: "0 -15px",
           }}
         >
-          <Tasks data={dataRes.new} />
-          <Tasks data={dataRes.inProgress} isProgress label="In Progress" />
-          <Tasks data={dataRes.completed} isProgress label="Completed" />
+          <DragDropContext>
+            <Tasks id="list-1" data={dataRes.new} />
+            <Tasks
+              id="list-2"
+              data={dataRes.inProgress}
+              isProgress
+              label="In Progress"
+            />
+            <Tasks
+              id="list-3"
+              data={dataRes.completed}
+              isProgress
+              label="Completed"
+            />
+          </DragDropContext>
         </div>
         <Modal
           onClick={this.handleCreateTask}

@@ -5,7 +5,7 @@ const RenderItem = ({ data }) => {
   return (
     <>
       {data.map((task, i) => {
-        return <TaskItem key={i} data={task} />;
+        return <TaskItem key={i} data={task} index={i} />;
       })}
     </>
   );
