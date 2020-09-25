@@ -2,8 +2,13 @@ import React from "react";
 
 // Components
 import { Header, Tasks } from "components/parts";
+import { Modal } from "components/elements";
 
 class ProjectDetail extends React.Component {
+  handleCreateTask = () => {
+    console.log("create task");
+  };
+
   render() {
     console.log("this.props.match :>> ", this.props.match);
 
@@ -22,6 +27,13 @@ class ProjectDetail extends React.Component {
           <Tasks isProgress label="In Progress" />
           <Tasks isProgress label="Completed" />
         </div>
+        <Modal
+          onClick={this.handleCreateTask}
+          idTarget="taskModal"
+          title="New Task"
+        >
+          task form
+        </Modal>
       </div>
     );
   }

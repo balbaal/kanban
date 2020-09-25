@@ -1,10 +1,6 @@
 import React from "react";
 import RenderItem from "./RenderItem";
-import { Button, LabelProgress, Modal } from "components/elements";
-
-const handleCreateTask = () => {
-  console.log("create task");
-};
+import { Button, LabelProgress } from "components/elements";
 
 const Tasks = ({ isProgress, label }) => {
   return (
@@ -19,9 +15,6 @@ const Tasks = ({ isProgress, label }) => {
         />
       )}
       <RenderItem />
-      <Modal onClick={handleCreateTask} idTarget="taskModal" title="New Task">
-        task form
-      </Modal>
     </div>
   );
 };

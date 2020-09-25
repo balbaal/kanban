@@ -1,12 +1,22 @@
 import React from "react";
 
 // Components
-import { Header, ProjectsWrap } from "components/parts";
+import { Header, ProjectsWrap, FormProject } from "components/parts";
 import { Modal } from "components/elements";
 
 class Projects extends React.Component {
+  state = {
+    projectName: "",
+  };
+
+  handleChangeForm = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  };
+
   handleCreateProject = () => {
-    console.log("create project");
+    console.log(this.state);
   };
 
   render() {
@@ -21,7 +31,10 @@ class Projects extends React.Component {
           idTarget="projectModal"
           onClick={this.handleCreateProject}
         >
-          create new project
+          <FormProject
+            projectName={this.state.projectName}
+            setProjectName={this.handleChangeForm}
+          />
         </Modal>
       </div>
     );
