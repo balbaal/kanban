@@ -10,6 +10,7 @@ class ProjectDetail extends React.Component {
     taskDescription: "",
     data: [
       {
+        id: 1,
         taskTitle: "Mobile App User Flow",
         taskDescription:
           "This is the brief description of the This is the brief description of the ",
@@ -18,6 +19,7 @@ class ProjectDetail extends React.Component {
         status: "new",
       },
       {
+        id: 2,
         taskTitle: "Mobile App User Flow",
         taskDescription:
           "This is the brief description of the This is the brief description of the ",
@@ -26,6 +28,7 @@ class ProjectDetail extends React.Component {
         status: "new",
       },
       {
+        id: 3,
         taskTitle: "Mobile App User Flow",
         taskDescription:
           "This is the brief description of the This is the brief description of the ",
