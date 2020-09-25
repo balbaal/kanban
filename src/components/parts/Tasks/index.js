@@ -1,11 +1,11 @@
 import React from "react";
 import RenderItem from "./RenderItem";
-import { Button } from "components/elements";
+import { Button, LabelProgress } from "components/elements";
 
-const Tasks = () => {
+const Tasks = ({ isProgress, label }) => {
   return (
     <div className="task-parent">
-      <Button />
+      {isProgress ? <LabelProgress label={label} /> : <Button />}
       <RenderItem />
     </div>
   );

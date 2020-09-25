@@ -19,8 +19,8 @@ class ProjectDetail extends React.Component {
           }}
         >
           <Tasks />
-          <Tasks />
-          <Tasks />
+          <Tasks isProgress label="In Progress" />
+          <Tasks isProgress label="Completed" />
         </div>
       </div>
     );
