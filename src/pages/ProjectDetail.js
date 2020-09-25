@@ -1,17 +1,26 @@
 import React from "react";
 
 // Components
-import { Header, Tasks } from "components/parts";
+import { Header, Tasks, FormTask } from "components/parts";
 import { Modal } from "components/elements";
 
 class ProjectDetail extends React.Component {
+  state = {
+    taskTitle: "",
+    taskDescription: "",
+  };
+
   handleCreateTask = () => {
-    console.log("create task");
+    console.log(this.state);
+  };
+
+  handleChangeForm = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
   };
 
   render() {
-    console.log("this.props.match :>> ", this.props.match);
-
     return (
       <div>
         <Header />
@@ -32,7 +41,11 @@ class ProjectDetail extends React.Component {
           idTarget="taskModal"
           title="New Task"
         >
-          task form
+          <FormTask
+            taskTitle={this.state.taskTitle}
+            taskDescription={this.state.taskDescription}
+            onChange={this.handleChangeForm}
+          />
         </Modal>
       </div>
     );
