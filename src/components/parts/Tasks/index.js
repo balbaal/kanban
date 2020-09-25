@@ -2,7 +2,7 @@ import React from "react";
 import RenderItem from "./RenderItem";
 import { Button, LabelProgress } from "components/elements";
 
-const Tasks = ({ isProgress, label }) => {
+const Tasks = ({ isProgress, label, data }) => {
   return (
     <div className="task-parent">
       {isProgress ? (
@@ -14,7 +14,7 @@ const Tasks = ({ isProgress, label }) => {
           dataTarget="#taskModal"
         />
       )}
-      <RenderItem />
+      <RenderItem data={data} />
     </div>
   );
 };

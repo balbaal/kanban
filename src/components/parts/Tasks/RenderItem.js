@@ -1,13 +1,12 @@
 import React from "react";
 import { TaskItem } from "components/elements";
 
-const RenderItem = () => {
+const RenderItem = ({ data }) => {
   return (
     <>
-      <TaskItem />
-      <TaskItem />
-      <TaskItem />
-      <TaskItem />
+      {data.map((task, i) => {
+        return <TaskItem key={i} data={task} />;
+      })}
     </>
   );
 };
