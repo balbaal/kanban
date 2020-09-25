@@ -5,39 +5,41 @@ import { DragDropContext } from "react-beautiful-dnd";
 import { Header, Tasks, FormTask } from "components/parts";
 import { Modal } from "components/elements";
 
+const dummyData = [
+  {
+    id: "38888383",
+    taskTitle: "Mobile App User Flow 1",
+    taskDescription:
+      "This is the brief description of the This is the brief description of the ",
+    date: "19 Aug",
+    owner: "Dian Sastro",
+    status: "new",
+  },
+  {
+    id: "22255",
+    taskTitle: "Mobile App User Flow 2",
+    taskDescription:
+      "This is the brief description of the This is the brief description of the ",
+    date: "20 Aug",
+    owner: "Dian Sastro",
+    status: "new",
+  },
+  {
+    id: "3355555",
+    taskTitle: "Mobile App User Flow 3",
+    taskDescription:
+      "This is the brief description of the This is the brief description of the ",
+    date: "20 Aug",
+    owner: "Dian Sastro",
+    status: "new",
+  },
+];
+
 class ProjectDetail extends React.Component {
   state = {
     taskTitle: "",
     taskDescription: "",
-    data: [
-      {
-        id: "38888383",
-        taskTitle: "Mobile App User Flow",
-        taskDescription:
-          "This is the brief description of the This is the brief description of the ",
-        date: "19 Aug",
-        owner: "Dian Sastro",
-        status: "new",
-      },
-      {
-        id: "22255",
-        taskTitle: "Mobile App User Flow",
-        taskDescription:
-          "This is the brief description of the This is the brief description of the ",
-        date: "20 Aug",
-        owner: "Dian Sastro",
-        status: "new",
-      },
-      {
-        id: "3355555",
-        taskTitle: "Mobile App User Flow",
-        taskDescription:
-          "This is the brief description of the This is the brief description of the ",
-        date: "20 Aug",
-        owner: "Dian Sastro",
-        status: "inProgress",
-      },
-    ],
+    data: { new: [], inProgress: [], completed: [] },
   };
 
   handleCreateTask = () => {
@@ -49,6 +51,32 @@ class ProjectDetail extends React.Component {
       ...this.state,
       [e.target.name]: e.target.value,
     });
+  };
+
+  handleOnDragEnd = (result) => {
+    const { source, destination, draggableId } = result;
+
+    let sourceList = this.state.data[source.droppableId];
+    let destinationList = this.state.data[destination.droppableId];
+
+    if (source.droppableId === destination.droppableId) {
+      const draggableTask = destinationList.filter(
+        (item) => item.id === draggableId
+      )[0];
+
+      sourceList.splice(source.index, 1);
+      destinationList.splice(destination.index, 0, draggableTask);
+
+      let newState = {
+        ...this.state,
+        data: {
+          ...this.state.data,
+          [source.droppableId]: destinationList,
+        },
+      };
+
+      this.setState(newState);
+    }
   };
 
   handleRestructureData = (data) => {
@@ -67,9 +95,15 @@ class ProjectDetail extends React.Component {
     return dataRes;
   };
 
-  render() {
-    const dataRes = this.handleRestructureData(this.state.data);
+  componentDidMount() {
+    const resData = this.handleRestructureData(dummyData);
+    this.setState({
+      ...this.state,
+      data: resData,
+    });
+  }
 
+  render() {
     return (
       <div>
         <Header />
@@ -81,17 +115,17 @@ class ProjectDetail extends React.Component {
             margin: "0 -15px",
           }}
         >
-          <DragDropContext>
-            <Tasks id="list-1" data={dataRes.new} />
+          <DragDropContext onDragEnd={this.handleOnDragEnd}>
+            <Tasks id="new" data={this.state.data.new} />
             <Tasks
-              id="list-2"
-              data={dataRes.inProgress}
+              id="inProgress"
+              data={this.state.data.inProgress}
               isProgress
               label="In Progress"
             />
             <Tasks
-              id="list-3"
-              data={dataRes.completed}
+              id="completed"
+              data={this.state.data.completed}
               isProgress
               label="Completed"
             />
