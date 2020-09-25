@@ -17,6 +17,22 @@ class ProjectDetail extends React.Component {
         owner: "Dian Sastro",
         status: "new",
       },
+      {
+        taskTitle: "Mobile App User Flow",
+        taskDescription:
+          "This is the brief description of the This is the brief description of the ",
+        date: "20 Aug",
+        owner: "Dian Sastro",
+        status: "new",
+      },
+      {
+        taskTitle: "Mobile App User Flow",
+        taskDescription:
+          "This is the brief description of the This is the brief description of the ",
+        date: "20 Aug",
+        owner: "Dian Sastro",
+        status: "inProgress",
+      },
     ],
   };
 
