@@ -8,13 +8,13 @@ const Header = () => {
         <div className="header__logo">Kanban.</div>
         <ul className="header__menu-list">
           <li className="header__menu-list__item">
-            <Link to="/">Home</Link>
+            <Link to="/projects">Home</Link>
           </li>
           <li className="header__menu-list__item">
-            <Link to="/projects">Profile</Link>
+            <Link to="/project/22">Profile</Link>
           </li>
           <li className="header__menu-list__item">
-            <Link to="/project/22">Logout</Link>
+            <Link to="/login">Logout</Link>
           </li>
         </ul>
       </div>
