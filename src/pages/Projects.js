@@ -11,6 +11,29 @@ const dummyData = [
     img: "https://picsum.photos/200/300",
     name: "RelaOne Project",
   },
+
+  {
+    id: new Date().getTime(),
+    img: "https://picsum.photos/200/300",
+    name: "RelaOne Project",
+  },
+
+  {
+    id: new Date().getTime(),
+    img: "https://picsum.photos/200/300",
+    name: "RelaOne Project",
+  },
+
+  {
+    id: new Date().getTime(),
+    img: "https://picsum.photos/200/300",
+    name: "RelaOne Project",
+  },
+  {
+    id: new Date().getTime(),
+    img: "https://picsum.photos/200/300",
+    name: "RelaOne Project",
+  },
 ];
 class Projects extends React.Component {
   state = {
