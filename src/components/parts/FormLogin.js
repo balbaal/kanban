@@ -36,11 +36,11 @@ const FormLogin = ({ onChange, data, onClick, history }) => {
         />
       </div>
 
-      <div class="checkbox mb-3">
+      {/* <div class="checkbox mb-3">
         <label>
           <input type="checkbox" value="remember-me" /> Remember me
         </label>
-      </div>
+      </div> */}
       <Button title="Sign In" className="btn-primary w-100" onClick={onClick} />
       <Button
         onClick={(e) => {

@@ -36,6 +36,19 @@ const FormLogin = ({ onChange, data, onClick, history }) => {
         />
       </div>
 
+      <div className="checkbox mb-3">
+        <label>
+          <Input
+            value={data.isManager}
+            onChange={onChange}
+            isCheck
+            type="checkbox"
+            name="isManager"
+          />{" "}
+          Manager
+        </label>
+      </div>
+
       <Button
         title="Register"
         className="btn-primary w-100"

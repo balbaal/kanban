@@ -5,12 +5,14 @@ class Login extends React.Component {
   state = {
     email: "",
     password: "",
+    isManager: false,
   };
 
   handleChangeForm = (e) => {
     this.setState({
       ...this.state,
-      [e.target.name]: e.target.value,
+      [e.target.name]:
+        e.target.name === "isManager" ? !this.state.isManager : e.target.value,
     });
   };
 
