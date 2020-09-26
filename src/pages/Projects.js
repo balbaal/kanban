@@ -7,30 +7,30 @@ import { Modal } from "components/elements";
 
 const dummyData = [
   {
-    id: new Date().getTime(),
+    id: String(new Date().getTime() + 1),
     img: "https://picsum.photos/200/300",
     name: "RelaOne Project",
   },
 
   {
-    id: new Date().getTime(),
+    id: String(new Date().getTime() + 2),
     img: "https://picsum.photos/200/300",
     name: "RelaOne Project",
   },
 
   {
-    id: new Date().getTime(),
+    id: String(new Date().getTime() + 3),
     img: "https://picsum.photos/200/300",
     name: "RelaOne Project",
   },
 
   {
-    id: new Date().getTime(),
+    id: String(new Date().getTime() + 4),
     img: "https://picsum.photos/200/300",
     name: "RelaOne Project",
   },
   {
-    id: new Date().getTime(),
+    id: String(new Date().getTime() + 5),
     img: "https://picsum.photos/200/300",
     name: "RelaOne Project",
   },
@@ -56,11 +56,16 @@ class Projects extends React.Component {
       name: this.state.projectName,
     };
 
-    this.setState({
-      ...this.state,
-      projectName: "",
-      data: [newData, ...this.state.data],
-    });
+    console.log("this.state.data :>> ", this.state.data);
+
+    this.setState(
+      {
+        ...this.state,
+        projectName: "",
+        data: [newData, ...this.state.data],
+      },
+      () => console.log("this.state >> ", this.state)
+    );
 
     $("#projectModal").modal("hide");
   };
