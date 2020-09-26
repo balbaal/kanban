@@ -22,7 +22,7 @@ const dummyData = [
       "This is the brief description of the This is the brief description of the ",
     date: "20 Aug",
     owner: "Dian Sastro",
-    status: "new",
+    status: "inProgress",
   },
   {
     id: "3355555",
@@ -59,19 +59,30 @@ class ProjectDetail extends React.Component {
     let sourceList = this.state.data[source.droppableId];
     let destinationList = this.state.data[destination.droppableId];
 
+    const draggableTask = sourceList.filter(
+      (item) => item.id === draggableId
+    )[0];
+
+    sourceList.splice(source.index, 1);
+    destinationList.splice(destination.index, 0, draggableTask);
+
     if (source.droppableId === destination.droppableId) {
-      const draggableTask = destinationList.filter(
-        (item) => item.id === draggableId
-      )[0];
-
-      sourceList.splice(source.index, 1);
-      destinationList.splice(destination.index, 0, draggableTask);
-
       let newState = {
         ...this.state,
         data: {
           ...this.state.data,
-          [source.droppableId]: destinationList,
+          [source.droppableId]: sourceList,
+        },
+      };
+
+      this.setState(newState);
+    } else {
+      let newState = {
+        ...this.state,
+        data: {
+          ...this.state.data,
+          [source.droppableId]: sourceList,
+          [destination.droppableId]: destinationList,
         },
       };
 
