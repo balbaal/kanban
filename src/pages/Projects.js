@@ -1,12 +1,21 @@
 import React from "react";
+import $ from "jquery";
 
 // Components
 import { Header, ProjectsWrap, FormProject } from "components/parts";
 import { Modal } from "components/elements";
 
+const dummyData = [
+  {
+    id: new Date().getTime(),
+    img: "https://picsum.photos/200/300",
+    name: "RelaOne Project",
+  },
+];
 class Projects extends React.Component {
   state = {
     projectName: "",
+    data: [],
   };
 
   handleChangeForm = (e) => {
@@ -17,14 +26,35 @@ class Projects extends React.Component {
 
   handleCreateProject = () => {
     console.log(this.state);
+
+    const newData = {
+      id: new Date().getTime(),
+      img: "https://picsum.photos/200/300",
+      name: this.state.projectName,
+    };
+
+    this.setState({
+      ...this.state,
+      projectName: "",
+      data: [newData, ...this.state.data],
+    });
+
+    $("#projectModal").modal("hide");
   };
+
+  componentDidMount() {
+    this.setState({
+      ...this.state,
+      data: [...dummyData],
+    });
+  }
 
   render() {
     return (
       <div>
         <Header />
         <div className="container mt-3">
-          <ProjectsWrap />
+          <ProjectsWrap data={this.state.data} />
         </div>
         <Modal
           title="New Project"

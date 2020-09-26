@@ -1,7 +1,7 @@
 import React from "react";
 import RenderItem from "./RenderItem";
 
-const Projects = () => {
+const Projects = ({ data }) => {
   return (
     <div className="project-parent">
       <div className="project-parent__head">
@@ -12,7 +12,7 @@ const Projects = () => {
           <button className="btn btn-sm btn-light">Settings</button>
         </div>
       </div>
-      <RenderItem />
+      <RenderItem data={data} />
     </div>
   );
 };
