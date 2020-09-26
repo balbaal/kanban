@@ -14,7 +14,7 @@ const FormLogin = ({ onChange, data, onClick, history }) => {
         width="72"
         height="72"
       />
-      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+      <h1 class="h3 mb-3 font-weight-normal">Register new user</h1>
 
       <div className="form-group w-100">
         <Input
@@ -36,18 +36,17 @@ const FormLogin = ({ onChange, data, onClick, history }) => {
         />
       </div>
 
-      <div class="checkbox mb-3">
-        <label>
-          <input type="checkbox" value="remember-me" /> Remember me
-        </label>
-      </div>
-      <Button title="Sign In" className="btn-primary w-100" onClick={onClick} />
+      <Button
+        title="Register"
+        className="btn-primary w-100"
+        onClick={onClick}
+      />
       <Button
         onClick={(e) => {
           e.preventDefault();
-          history.push("/register");
+          history.push("/login");
         }}
-        title="didn't have account ?"
+        title="already have account ?"
         className="btn-link w-100"
       />
       <p class="mt-5 mb-3 text-muted">Management Task App | © 2020</p>

@@ -4,6 +4,7 @@ import FormProject from "./Projects/FormProject";
 import FormTask from "./Projects/FormTask";
 import Tasks from "./Tasks";
 import FormLogin from "./FormLogin";
+import FormRegister from "./FormRegister";
 
 export {
   Header,
@@ -12,4 +13,5 @@ export {
   FormProject,
   FormTask,
   FormLogin,
+  FormRegister,
 };
