@@ -78,6 +78,8 @@ class ProjectDetail extends React.Component {
   handleOnDragEnd = (result) => {
     const { source, destination, draggableId } = result;
 
+    if (!destination) return;
+
     let sourceList = this.state.data[source.droppableId];
     let destinationList = this.state.data[destination.droppableId];
 
