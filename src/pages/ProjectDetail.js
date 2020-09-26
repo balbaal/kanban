@@ -1,5 +1,6 @@
 import React from "react";
 import { DragDropContext } from "react-beautiful-dnd";
+import $ from "jquery";
 
 // Components
 import { Header, Tasks, FormTask } from "components/parts";
@@ -43,7 +44,28 @@ class ProjectDetail extends React.Component {
   };
 
   handleCreateTask = () => {
-    console.log(this.state);
+    const { taskTitle, taskDescription } = this.state;
+
+    const newTask = {
+      id: String(new Date().getTime()),
+      taskTitle,
+      taskDescription,
+      date: "26 Sep",
+      owner: "Brian Immanuel",
+      status: "new",
+    };
+
+    this.setState({
+      ...this.state,
+      taskTitle: "",
+      taskDescription: "",
+      data: {
+        ...this.state.data,
+        new: [newTask, ...this.state.data.new],
+      },
+    });
+
+    $("#taskModal").modal("hide");
   };
 
   handleChangeForm = (e) => {
