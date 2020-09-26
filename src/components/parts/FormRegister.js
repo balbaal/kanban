@@ -18,6 +18,16 @@ const FormLogin = ({ onChange, data, onClick, history }) => {
 
       <div className="form-group w-100">
         <Input
+          type="name"
+          placeholder="Name . . . "
+          name="name"
+          value={data.name}
+          onChange={onChange}
+        />
+      </div>
+
+      <div className="form-group w-100">
+        <Input
           type="email"
           placeholder="Email address . . ."
           name="email"

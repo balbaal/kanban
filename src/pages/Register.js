@@ -3,6 +3,7 @@ import { FormRegister } from "components/parts";
 
 class Login extends React.Component {
   state = {
+    name: "",
     email: "",
     password: "",
     isManager: false,
