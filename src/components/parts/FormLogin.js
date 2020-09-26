@@ -3,7 +3,7 @@ import React from "react";
 // Component
 import { Input, Button } from "components/elements";
 
-const FormLogin = () => {
+const FormLogin = ({ onChange, data, onClick }) => {
   return (
     <form class="form-signin">
       <img
@@ -20,8 +20,8 @@ const FormLogin = () => {
           type="email"
           placeholder="Email address . . ."
           name="email"
-          value=""
-          onChange={() => {}}
+          value={data.email}
+          onChange={onChange}
         />
       </div>
 
@@ -30,8 +30,8 @@ const FormLogin = () => {
           type="password"
           placeholder="Password . . ."
           name="password"
-          value=""
-          onChange={() => {}}
+          value={data.password}
+          onChange={onChange}
         />
       </div>
 
@@ -40,11 +40,7 @@ const FormLogin = () => {
           <input type="checkbox" value="remember-me" /> Remember me
         </label>
       </div>
-      <Button
-        title="Sign In"
-        className="btn-primary w-100"
-        onClick={() => {}}
-      />
+      <Button title="Sign In" className="btn-primary w-100" onClick={onClick} />
       <p class="mt-5 mb-3 text-muted">Management Task App | © 2020</p>
     </form>
   );
