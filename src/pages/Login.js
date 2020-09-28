@@ -1,11 +1,18 @@
 import React from "react";
+import qs from "qs";
 import { FormLogin } from "components/parts";
 
 class Login extends React.Component {
-  state = {
-    email: "",
-    password: "",
-  };
+  constructor(props) {
+    super();
+
+    this.state = {
+      email: !!props.location.search
+        ? qs.parse(props.location.search, { ignoreQueryPrefix: true }).email
+        : "",
+      password: "",
+    };
+  }
 
   handleChangeForm = (e) => {
     this.setState({
