@@ -8,36 +8,6 @@ import jwt from "jsonwebtoken";
 import { Header, ProjectsWrap, FormProject } from "components/parts";
 import { Modal } from "components/elements";
 
-const dummyData = [
-  {
-    id: String(new Date().getTime() + 1),
-    img: "https://picsum.photos/200/300",
-    name: "RelaOne Project",
-  },
-
-  {
-    id: String(new Date().getTime() + 2),
-    img: "https://picsum.photos/200/300",
-    name: "RelaOne Project",
-  },
-
-  {
-    id: String(new Date().getTime() + 3),
-    img: "https://picsum.photos/200/300",
-    name: "RelaOne Project",
-  },
-
-  {
-    id: String(new Date().getTime() + 4),
-    img: "https://picsum.photos/200/300",
-    name: "RelaOne Project",
-  },
-  {
-    id: String(new Date().getTime() + 5),
-    img: "https://picsum.photos/200/300",
-    name: "RelaOne Project",
-  },
-];
 class Projects extends React.Component {
   state = {
     projectName: "",
