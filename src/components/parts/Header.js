@@ -1,20 +1,28 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import jsCookie from "js-cookie";
 
-const Header = () => {
+const Header = (props) => {
+  const handleLogout = async () => {
+    // remove token
+
+    jsCookie.remove("token");
+    localStorage.removeItem("token");
+    window.location.href = "/login";
+  };
+
   return (
     <header className="bg-purple">
       <div className="header container-fluid">
         <div className="header__logo">Kanban.</div>
         <ul className="header__menu-list">
           <li className="header__menu-list__item">
-            <Link to="/projects">Home</Link>
+            <Link to="/projects">Projects</Link>
           </li>
           <li className="header__menu-list__item">
-            <Link to="/project/22">Profile</Link>
-          </li>
-          <li className="header__menu-list__item">
-            <Link to="/login">Logout</Link>
+            <Link onClick={handleLogout} to="#">
+              Logout
+            </Link>
           </li>
         </ul>
       </div>

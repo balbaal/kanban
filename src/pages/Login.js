@@ -34,12 +34,11 @@ class Login extends React.Component {
 
     try {
       const resLogin = await axios.post("/login", payload);
-
-      // set cookie
+      // set token
       const in30Minutes = 1 / 48;
       jsCookie.set("token", resLogin.data.token, { expires: in30Minutes });
-
-      this.props.history.push("/projects");
+      localStorage.setItem("token", resLogin.data.token);
+      window.location.href = "/projects";
     } catch (error) {
       console.log("error :>> ", error);
     }
