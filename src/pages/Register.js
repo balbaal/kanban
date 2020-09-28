@@ -31,7 +31,7 @@ class Login extends React.Component {
 
     try {
       await axios.post("/register", payload);
-      this.props.history.push("/login");
+      this.props.history.push(`/login?email=${email}`);
     } catch (error) {
       console.log("error :>> ", error);
     }
