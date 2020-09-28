@@ -65,7 +65,7 @@ class ProjectDetail extends React.Component {
     });
   };
 
-  handleOnDragEnd = (result) => {
+  handleOnDragEnd = async (result) => {
     const { source, destination, draggableId } = result;
 
     if (!destination) return;
@@ -80,27 +80,38 @@ class ProjectDetail extends React.Component {
     sourceList.splice(source.index, 1);
     destinationList.splice(destination.index, 0, draggableTask);
 
-    if (source.droppableId === destination.droppableId) {
-      let newState = {
-        ...this.state,
-        data: {
-          ...this.state.data,
-          [source.droppableId]: sourceList,
-        },
+    try {
+      const payload = {
+        taskId: result.draggableId,
+        status: destination.droppableId,
       };
 
-      this.setState(newState);
-    } else {
-      let newState = {
-        ...this.state,
-        data: {
-          ...this.state.data,
-          [source.droppableId]: sourceList,
-          [destination.droppableId]: destinationList,
-        },
-      };
+      await axios.put("/task", payload);
 
-      this.setState(newState);
+      if (source.droppableId === destination.droppableId) {
+        let newState = {
+          ...this.state,
+          data: {
+            ...this.state.data,
+            [source.droppableId]: sourceList,
+          },
+        };
+
+        this.setState(newState);
+      } else {
+        let newState = {
+          ...this.state,
+          data: {
+            ...this.state.data,
+            [source.droppableId]: sourceList,
+            [destination.droppableId]: destinationList,
+          },
+        };
+
+        this.setState(newState);
+      }
+    } catch (error) {
+      console.log("error :>> ", error);
     }
   };
 
