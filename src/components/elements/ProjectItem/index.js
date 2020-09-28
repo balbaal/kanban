@@ -26,7 +26,7 @@ const ProjectItem = (props) => {
         }}
         className="project-item__edit"
       >
-        edit
+        <i className="fa fa-edit" />
       </span>
     </div>
   );
