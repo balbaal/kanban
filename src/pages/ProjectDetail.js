@@ -1,6 +1,7 @@
 import React from "react";
 import { DragDropContext } from "react-beautiful-dnd";
 import $ from "jquery";
+import axios from "configs/axios";
 
 // Components
 import { Header, Tasks, FormTask } from "components/parts";
@@ -47,10 +48,10 @@ class ProjectDetail extends React.Component {
     const { taskTitle, taskDescription } = this.state;
 
     const newTask = {
-      id: String(new Date().getTime()),
+      _id: String(new Date().getTime()),
       taskTitle,
       taskDescription,
-      date: "26 Sep",
+      createdDate: new Date(),
       owner: "Brian Immanuel",
       status: "new",
     };
@@ -84,7 +85,7 @@ class ProjectDetail extends React.Component {
     let destinationList = this.state.data[destination.droppableId];
 
     const draggableTask = sourceList.filter(
-      (item) => item.id === draggableId
+      (item) => item._id === draggableId
     )[0];
 
     sourceList.splice(source.index, 1);
@@ -130,8 +131,11 @@ class ProjectDetail extends React.Component {
     return dataRes;
   };
 
-  componentDidMount() {
-    const resData = this.handleRestructureData(dummyData);
+  async componentDidMount() {
+    const projectId = this.props.match.params.id;
+    const resTaskList = await axios.get(`/task/${projectId}`);
+
+    const resData = this.handleRestructureData(resTaskList.data);
     this.setState({
       ...this.state,
       data: resData,

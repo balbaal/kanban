@@ -3,7 +3,7 @@ import { Draggable } from "react-beautiful-dnd";
 
 const TaskItem = ({ data, index }) => {
   return (
-    <Draggable draggableId={data.id} index={index}>
+    <Draggable draggableId={data._id} index={index}>
       {(provided) => (
         <div
           ref={provided.innerRef}
@@ -13,7 +13,11 @@ const TaskItem = ({ data, index }) => {
         >
           <div className="task-item__header">
             <h4 className="task-item__header__title">{data.taskTitle}</h4>
-            <h6 className="task-item__header__date">{data.date}</h6>
+            <h6 className="task-item__header__date">{`${new Date(
+              data.createdDate
+            ).getDate()}-${new Date(data.createdDate).getMonth()}-${new Date(
+              data.createdDate
+            ).getFullYear()}`}</h6>
           </div>
           <p className="task-item__content">{data.taskDescription}</p>
           <h6 className="task-item__owner">by {data.owner}</h6>
