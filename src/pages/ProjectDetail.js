@@ -2,6 +2,8 @@ import React from "react";
 import { DragDropContext } from "react-beautiful-dnd";
 import $ from "jquery";
 import axios from "configs/axios";
+import jsCookie from "js-cookie";
+import jwt from "jsonwebtoken";
 
 // Components
 import { Header, Tasks, FormTask } from "components/parts";
@@ -14,29 +16,46 @@ class ProjectDetail extends React.Component {
     data: { new: [], inProgress: [], completed: [] },
   };
 
-  handleCreateTask = () => {
+  handleCreateTask = async () => {
     const { taskTitle, taskDescription } = this.state;
 
-    const newTask = {
-      _id: String(new Date().getTime()),
+    const token = jsCookie.get("token");
+    const tokenDecoded = jwt.decode(token);
+    const projectId = this.props.match.params.id;
+
+    const payload = {
       taskTitle,
       taskDescription,
-      createdDate: new Date(),
-      owner: "Brian Immanuel",
-      status: "new",
+      projectId,
+      owner: tokenDecoded.name,
     };
 
-    this.setState({
-      ...this.state,
-      taskTitle: "",
-      taskDescription: "",
-      data: {
-        ...this.state.data,
-        new: [newTask, ...this.state.data.new],
-      },
-    });
+    try {
+      const resTask = await axios.post("/task", payload);
 
-    $("#taskModal").modal("hide");
+      const newTask = {
+        _id: resTask.data.id,
+        taskTitle: resTask.data.taskTitle,
+        taskDescription: resTask.data.taskDescription,
+        createdDate: resTask.data.createdDate,
+        owner: resTask.data.owner,
+        status: resTask.data.status,
+      };
+
+      this.setState({
+        ...this.state,
+        taskTitle: "",
+        taskDescription: "",
+        data: {
+          ...this.state.data,
+          new: [...this.state.data.new, newTask],
+        },
+      });
+
+      $("#taskModal").modal("hide");
+    } catch (error) {
+      console.log("error :>> ", error);
+    }
   };
 
   handleChangeForm = (e) => {
