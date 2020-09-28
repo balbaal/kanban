@@ -1,5 +1,8 @@
 import React from "react";
 import $ from "jquery";
+import axios from "configs/axios";
+import jsCookie from "js-cookie";
+import jwt from "jsonwebtoken";
 
 // Components
 import { Header, ProjectsWrap, FormProject } from "components/parts";
@@ -70,10 +73,26 @@ class Projects extends React.Component {
     $("#projectModal").modal("hide");
   };
 
-  componentDidMount() {
+  async componentDidMount() {
+    const token = jsCookie.get("token");
+    const tokenDecoded = jwt.decode(token);
+
+    const resProject = await axios.get(`/project/${tokenDecoded.id}`);
+    let projectList = [];
+
+    if (resProject.data.length > 0) {
+      projectList = resProject.data.map((item, i) => {
+        return {
+          name: item.projectName,
+          id: item._id,
+          img: "https://picsum.photos/200/300",
+        };
+      });
+    }
+
     this.setState({
       ...this.state,
-      data: [...dummyData],
+      data: projectList,
     });
   }
 
