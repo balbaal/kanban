@@ -20,27 +20,34 @@ class Projects extends React.Component {
     });
   };
 
-  handleCreateProject = () => {
-    console.log(this.state);
+  handleCreateProject = async () => {
+    const token = jsCookie.get("token");
+    const tokenDecoded = jwt.decode(token);
 
-    const newData = {
-      id: new Date().getTime(),
-      img: "https://picsum.photos/200/300",
-      name: this.state.projectName,
+    const payload = {
+      projectName: this.state.projectName,
+      userId: tokenDecoded.id,
     };
 
-    console.log("this.state.data :>> ", this.state.data);
-
-    this.setState(
-      {
+    try {
+      const resProject = await axios.post("/project", payload);
+      this.setState({
         ...this.state,
         projectName: "",
-        data: [newData, ...this.state.data],
-      },
-      () => console.log("this.state >> ", this.state)
-    );
+        data: [
+          ...this.state.data,
+          {
+            name: resProject.data.projectName,
+            id: resProject.data.id,
+            img: "http://picsum.photos/200/300",
+          },
+        ],
+      });
 
-    $("#projectModal").modal("hide");
+      $("#projectModal").modal("hide");
+    } catch (error) {
+      console.log("error :>> ", error);
+    }
   };
 
   async componentDidMount() {
