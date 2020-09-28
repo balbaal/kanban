@@ -6,15 +6,15 @@ import { Input, Button } from "components/elements";
 
 const FormLogin = ({ onChange, data, onClick, history }) => {
   return (
-    <form class="form-signin">
+    <form className="form-signin">
       <img
-        class="mb-4"
+        className="mb-4"
         src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg"
         alt=""
         width="72"
         height="72"
       />
-      <h1 class="h3 mb-3 font-weight-normal">Register new user</h1>
+      <h1 className="h3 mb-3 font-weight-normal">Register new user</h1>
 
       <div className="form-group w-100">
         <Input
@@ -72,7 +72,7 @@ const FormLogin = ({ onChange, data, onClick, history }) => {
         title="already have account ?"
         className="btn-link w-100"
       />
-      <p class="mt-5 mb-3 text-muted">Management Task App | © 2020</p>
+      <p className="mt-5 mb-3 text-muted">Management Task App | © 2020</p>
     </form>
   );
 };
