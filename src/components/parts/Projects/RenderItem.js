@@ -1,11 +1,13 @@
 import React from "react";
 import { ProjectItem, ProjectButton } from "components/elements";
 
-const RenderItem = ({ data }) => {
+const RenderItem = ({ data, onClickEdit }) => {
   return (
     <div className="project-render-item">
       {data.map((item, i) => {
-        return <ProjectItem key={item.id} data={item} />;
+        return (
+          <ProjectItem onClickEdit={onClickEdit} key={item.id} data={item} />
+        );
       })}
       <ProjectButton />
     </div>

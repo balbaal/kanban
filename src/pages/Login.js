@@ -34,8 +34,7 @@ class Login extends React.Component {
     try {
       const resLogin = await axios.post("/login", payload);
       // set token
-      const in30Minutes = 1 / 48;
-      jsCookie.set("token", resLogin.data.token, { expires: in30Minutes });
+      jsCookie.set("token", resLogin.data.token, { expires: 1 });
       localStorage.setItem("token", resLogin.data.token);
       window.location.href = "/projects";
     } catch (error) {

@@ -17,6 +17,17 @@ const ProjectItem = (props) => {
       <h5 className="project-item__owner">
         <span>by</span> {props.data.owner}
       </h5>
+      <span
+        data-toggle="modal"
+        data-target="#projectModalUpdate"
+        onClick={(e) => {
+          e.stopPropagation();
+          props.onClickEdit(props.data);
+        }}
+        className="project-item__edit"
+      >
+        edit
+      </span>
     </div>
   );
 };

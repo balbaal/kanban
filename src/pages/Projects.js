@@ -11,6 +11,7 @@ import { Modal } from "components/elements";
 class Projects extends React.Component {
   state = {
     projectName: "",
+    projectId: "",
     data: [],
   };
 
@@ -18,6 +19,40 @@ class Projects extends React.Component {
     this.setState({
       [e.target.name]: e.target.value,
     });
+  };
+
+  handleUpdateProject = async () => {
+    const token = jsCookie.get("token");
+    const tokenDecoded = jwt.decode(token);
+
+    const payload = {
+      projectName: this.state.projectName,
+      projectId: this.state.projectId,
+    };
+
+    try {
+      await axios.put("/project", payload);
+      this.setState({
+        ...this.state,
+        projectName: "",
+        projectId: "",
+        data: [
+          ...this.state.data.filter(
+            (projectItem) => projectItem.id !== payload.projectId
+          ),
+          {
+            name: payload.projectName,
+            id: payload.projectId,
+            img: "http://picsum.photos/200/300",
+            owner: tokenDecoded.name,
+          },
+        ],
+      });
+
+      $("#projectModalUpdate").modal("hide");
+    } catch (error) {
+      console.log("error :>> ", error);
+    }
   };
 
   handleCreateProject = async () => {
@@ -80,12 +115,32 @@ class Projects extends React.Component {
       <div>
         <Header />
         <div className="container mt-3">
-          <ProjectsWrap data={this.state.data} />
+          <ProjectsWrap
+            onClickEdit={(value) =>
+              this.setState({
+                ...this.state,
+                projectName: value.name,
+                projectId: value.id,
+              })
+            }
+            data={this.state.data}
+          />
         </div>
         <Modal
           title="New Project"
           idTarget="projectModal"
           onClick={this.handleCreateProject}
+        >
+          <FormProject
+            projectName={this.state.projectName}
+            setProjectName={this.handleChangeForm}
+          />
+        </Modal>
+
+        <Modal
+          title="Update Project"
+          idTarget="projectModalUpdate"
+          onClick={this.handleUpdateProject}
         >
           <FormProject
             projectName={this.state.projectName}

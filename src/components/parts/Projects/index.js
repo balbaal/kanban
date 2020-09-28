@@ -1,7 +1,7 @@
 import React from "react";
 import RenderItem from "./RenderItem";
 
-const Projects = ({ data }) => {
+const Projects = ({ data, onClickEdit }) => {
   return (
     <div className="project-parent">
       <div className="project-parent__head">
@@ -12,7 +12,7 @@ const Projects = ({ data }) => {
           <button className="btn btn-sm btn-light">Settings</button>
         </div>
       </div>
-      <RenderItem data={data} />
+      <RenderItem onClickEdit={onClickEdit} data={data} />
     </div>
   );
 };
