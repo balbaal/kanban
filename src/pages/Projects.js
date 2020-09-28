@@ -86,6 +86,24 @@ class Projects extends React.Component {
     }
   };
 
+  handleDeleteProject = async (projectId) => {
+    try {
+      await axios.delete(`/project/${projectId}`);
+      this.setState({
+        ...this.state,
+        projectName: "",
+        projectId: "",
+        data: [
+          ...this.state.data.filter(
+            (projectItem) => projectItem.id !== projectId
+          ),
+        ],
+      });
+    } catch (error) {
+      console.log("error :>> ", error);
+    }
+  };
+
   async componentDidMount() {
     const token = jsCookie.get("token");
     const tokenDecoded = jwt.decode(token);
@@ -116,13 +134,17 @@ class Projects extends React.Component {
         <Header />
         <div className="container mt-3">
           <ProjectsWrap
-            onClickEdit={(value) =>
-              this.setState({
-                ...this.state,
-                projectName: value.name,
-                projectId: value.id,
-              })
-            }
+            onClickEdit={(value, type) => {
+              if (type === "update") {
+                this.setState({
+                  ...this.state,
+                  projectName: value.name,
+                  projectId: value.id,
+                });
+              } else {
+                this.handleDeleteProject(value.id);
+              }
+            }}
             data={this.state.data}
           />
         </div>

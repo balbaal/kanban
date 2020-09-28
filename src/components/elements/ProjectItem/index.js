@@ -22,11 +22,20 @@ const ProjectItem = (props) => {
         data-target="#projectModalUpdate"
         onClick={(e) => {
           e.stopPropagation();
-          props.onClickEdit(props.data);
+          props.onClickEdit(props.data, "update");
         }}
         className="project-item__edit"
       >
         <i className="fa fa-edit" />
+      </span>
+      <span
+        onClick={(e) => {
+          e.stopPropagation();
+          props.onClickEdit(props.data, "delete");
+        }}
+        className="project-item__delete"
+      >
+        <i className="fa fa-trash" />
       </span>
     </div>
   );
