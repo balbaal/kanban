@@ -40,6 +40,7 @@ class Projects extends React.Component {
             name: resProject.data.projectName,
             id: resProject.data.id,
             img: "http://picsum.photos/200/300",
+            owner: tokenDecoded.name,
           },
         ],
       });
@@ -63,6 +64,7 @@ class Projects extends React.Component {
           name: item.projectName,
           id: item._id,
           img: "https://picsum.photos/200/300",
+          owner: item.userId[0].name,
         };
       });
     }
