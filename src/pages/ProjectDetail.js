@@ -7,36 +7,6 @@ import axios from "configs/axios";
 import { Header, Tasks, FormTask } from "components/parts";
 import { Modal } from "components/elements";
 
-const dummyData = [
-  {
-    id: "38888383",
-    taskTitle: "Mobile App User Flow 1",
-    taskDescription:
-      "This is the brief description of the This is the brief description of the ",
-    date: "19 Aug",
-    owner: "Dian Sastro",
-    status: "new",
-  },
-  {
-    id: "22255",
-    taskTitle: "Mobile App User Flow 2",
-    taskDescription:
-      "This is the brief description of the This is the brief description of the ",
-    date: "20 Aug",
-    owner: "Dian Sastro",
-    status: "inProgress",
-  },
-  {
-    id: "3355555",
-    taskTitle: "Mobile App User Flow 3",
-    taskDescription:
-      "This is the brief description of the This is the brief description of the ",
-    date: "20 Aug",
-    owner: "Dian Sastro",
-    status: "new",
-  },
-];
-
 class ProjectDetail extends React.Component {
   state = {
     taskTitle: "",
