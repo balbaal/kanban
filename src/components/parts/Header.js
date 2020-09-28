@@ -10,7 +10,7 @@ const Header = (props) => {
     const token = jsCookie.get("token");
     if (!!token) {
       const tokenDecoded = jwt.decode(token);
-      setProfile(tokenDecoded.name);
+      setProfile(`${tokenDecoded.name} (${tokenDecoded.role})`);
     }
   }, [profile]);
 
