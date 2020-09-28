@@ -1,5 +1,6 @@
 import React from "react";
 import { FormRegister } from "components/parts";
+import axios from "configs/axios";
 
 class Login extends React.Component {
   state = {
@@ -17,11 +18,23 @@ class Login extends React.Component {
     });
   };
 
-  handleRegister = (e) => {
+  handleRegister = async (e) => {
     e.preventDefault();
-    console.log("this.state :>> ", this.state);
 
-    this.props.history.push("/projects");
+    const { name, email, password, isManager } = this.state;
+    const payload = {
+      name,
+      email,
+      password,
+      role: isManager ? "manager" : "employee",
+    };
+
+    try {
+      await axios.post("/register", payload);
+      this.props.history.push("/login");
+    } catch (error) {
+      console.log("error :>> ", error);
+    }
   };
 
   render() {
