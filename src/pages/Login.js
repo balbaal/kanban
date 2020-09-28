@@ -1,6 +1,9 @@
 import React from "react";
 import qs from "qs";
 import { FormLogin } from "components/parts";
+import axios from "configs/axios";
+import jwt from "jsonwebtoken";
+import jsCookie from "js-cookie";
 
 class Login extends React.Component {
   constructor(props) {
@@ -21,11 +24,25 @@ class Login extends React.Component {
     });
   };
 
-  handleLogin = (e) => {
+  handleLogin = async (e) => {
     e.preventDefault();
-    console.log("this.state :>> ", this.state);
+    const { email, password } = this.state;
+    const payload = {
+      email,
+      password,
+    };
 
-    this.props.history.push("/projects");
+    try {
+      const resLogin = await axios.post("/login", payload);
+
+      // set cookie
+      const in30Minutes = 1 / 48;
+      jsCookie.set("token", resLogin.data.token, { expires: in30Minutes });
+
+      this.props.history.push("/projects");
+    } catch (error) {
+      console.log("error :>> ", error);
+    }
   };
 
   render() {
