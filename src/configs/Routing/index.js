@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import jsCookie from "js-cookie";
+import { BrowserRouter, Switch } from "react-router-dom";
 
 // Components
 import App from "pages/App";
@@ -13,29 +12,14 @@ import Register from "pages/Register";
 import ProtectedRoute from "./ProtectedRoute";
 import PublicRoute from "./PublicRoute";
 
-const auth = {
-  isLoggedIn: false,
-  setIsLoggedIn() {
-    this.isLoggedIn = true;
-  },
-  get() {
-    return this.isLoggedIn;
-  },
-};
-
 const Routing = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  // const token = localStorage.getItem("token");
-  // if (!!token) auth.setIsLoggedIn();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!!token) setIsLoggedIn(true);
     else setIsLoggedIn(false);
-  });
-
-  // console.log("auth.get() :>> ", auth.get());
+  }, [isLoggedIn]);
 
   return (
     <BrowserRouter>

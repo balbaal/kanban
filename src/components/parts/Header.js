@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import jsCookie from "js-cookie";
+import jwt from "jsonwebtoken";
 
 const Header = (props) => {
+  const [profile, setProfile] = useState("Undefined");
+
+  useEffect(() => {
+    const token = jsCookie.get("token");
+    if (!!token) {
+      const tokenDecoded = jwt.decode(token);
+      setProfile(tokenDecoded.name);
+    }
+  }, [profile]);
+
   const handleLogout = async () => {
     // remove token
 
@@ -18,6 +29,9 @@ const Header = (props) => {
         <ul className="header__menu-list">
           <li className="header__menu-list__item">
             <Link to="/projects">Projects</Link>
+          </li>
+          <li className="header__menu-list__item">
+            <Link to="#">{profile}</Link>
           </li>
           <li className="header__menu-list__item">
             <Link onClick={handleLogout} to="#">

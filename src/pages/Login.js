@@ -2,7 +2,6 @@ import React from "react";
 import qs from "qs";
 import { FormLogin } from "components/parts";
 import axios from "configs/axios";
-import jwt from "jsonwebtoken";
 import jsCookie from "js-cookie";
 
 class Login extends React.Component {
