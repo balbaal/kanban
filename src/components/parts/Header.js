@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import jsCookie from "js-cookie";
 import jwt from "jsonwebtoken";
 
-const Header = (props) => {
+const Header = () => {
   const [profile, setProfile] = useState("Undefined");
 
   useEffect(() => {

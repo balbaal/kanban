@@ -17,26 +17,30 @@ const ProjectItem = (props) => {
       <h5 className="project-item__owner">
         <span>by</span> {props.data.owner}
       </h5>
-      <span
-        data-toggle="modal"
-        data-target="#projectModalUpdate"
-        onClick={(e) => {
-          e.stopPropagation();
-          props.onClickEdit(props.data, "update");
-        }}
-        className="project-item__edit"
-      >
-        <i className="fa fa-edit" />
-      </span>
-      <span
-        onClick={(e) => {
-          e.stopPropagation();
-          props.onClickEdit(props.data, "delete");
-        }}
-        className="project-item__delete"
-      >
-        <i className="fa fa-trash" />
-      </span>
+      {props.role === "employee" ? (
+        <>
+          <span
+            data-toggle="modal"
+            data-target="#projectModalUpdate"
+            onClick={(e) => {
+              e.stopPropagation();
+              props.onClickEdit(props.data, "update");
+            }}
+            className="project-item__edit"
+          >
+            <i className="fa fa-edit" />
+          </span>
+          <span
+            onClick={(e) => {
+              e.stopPropagation();
+              props.onClickEdit(props.data, "delete");
+            }}
+            className="project-item__delete"
+          >
+            <i className="fa fa-trash" />
+          </span>
+        </>
+      ) : null}
     </div>
   );
 };
