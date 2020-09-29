@@ -1,7 +1,7 @@
 import React from "react";
 import { Draggable } from "react-beautiful-dnd";
 
-const TaskItem = ({ data, index, handleCtaButton }) => {
+const TaskItem = ({ data, index, handleCtaButton, role }) => {
   return (
     <Draggable draggableId={data._id} index={index}>
       {(provided) => (
@@ -21,18 +21,20 @@ const TaskItem = ({ data, index, handleCtaButton }) => {
           </div>
           <p className="task-item__content">{data.taskDescription}</p>
           <h6 className="task-item__owner">by {data.owner}</h6>
-          <div className="task-item__cta">
-            <i
-              onClick={() => handleCtaButton(data, "delete")}
-              className="fa fa-trash"
-            />
-            <i
-              data-target="#taskModalEdit"
-              data-toggle="modal"
-              onClick={() => handleCtaButton(data, "edit")}
-              className="fa fa-pencil"
-            />
-          </div>
+          {role === "employee" ? (
+            <div className="task-item__cta">
+              <i
+                onClick={() => handleCtaButton(data, "delete")}
+                className="fa fa-trash"
+              />
+              <i
+                data-target="#taskModalEdit"
+                data-toggle="modal"
+                onClick={() => handleCtaButton(data, "edit")}
+                className="fa fa-pencil"
+              />
+            </div>
+          ) : null}
         </div>
       )}
     </Draggable>
