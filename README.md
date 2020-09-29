@@ -17,5 +17,8 @@ To run this project, install it locally using npm:
 ```
 $ cd kanban
 $ npm install
+
+create .env file on root folder & copy variable REACT_APP_HOST_API inside file .env.example
+
 $ npm run dev //running on port 3000
 ```
