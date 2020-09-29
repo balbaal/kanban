@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
 import "./assets/styles/custom.sass";
 import * as serviceWorker from "./serviceWorker";
-import Routing from "./configs/routing";
+import Routing from "./configs/Routing";
 
 ReactDOM.render(
   <React.StrictMode>
