@@ -132,7 +132,7 @@ class Projects extends React.Component {
     return (
       <div>
         <Header />
-        <div className="container mt-3">
+        <div className="container-fluid mt-3">
           <ProjectsWrap
             onClickEdit={(value, type) => {
               if (type === "update") {

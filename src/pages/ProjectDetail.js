@@ -211,7 +211,6 @@ class ProjectDetail extends React.Component {
           style={{
             height: "calc(100vh - 46px)",
             backgroundColor: "#F6F8FA",
-            margin: "0 -15px",
           }}
         >
           <DragDropContext onDragEnd={this.handleOnDragEnd}>

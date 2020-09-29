@@ -30,7 +30,7 @@ const Header = () => {
           <li className="header__menu-list__item">
             <Link to="/projects">Projects</Link>
           </li>
-          <li className="header__menu-list__item">
+          <li className="header__menu-list__item text-capitalize">
             <Link to="#">{profile}</Link>
           </li>
           <li className="header__menu-list__item">
