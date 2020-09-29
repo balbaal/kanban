@@ -26,7 +26,12 @@ const TaskItem = ({ data, index, handleCtaButton }) => {
               onClick={() => handleCtaButton(data, "delete")}
               className="fa fa-trash"
             />
-            <i className="fa fa-pencil" />
+            <i
+              data-target="#taskModalEdit"
+              data-toggle="modal"
+              onClick={() => handleCtaButton(data, "edit")}
+              className="fa fa-pencil"
+            />
           </div>
         </div>
       )}

@@ -11,6 +11,7 @@ import { Modal } from "components/elements";
 
 class ProjectDetail extends React.Component {
   state = {
+    taskId: "",
     taskTitle: "",
     taskDescription: "",
     data: { new: [], inProgress: [], completed: [] },
@@ -53,6 +54,36 @@ class ProjectDetail extends React.Component {
       });
 
       $("#taskModal").modal("hide");
+    } catch (error) {
+      console.log("error :>> ", error);
+    }
+  };
+
+  handleUpdateTask = async () => {
+    const { taskId, taskTitle, taskDescription } = this.state;
+    // update task
+    const payload = {
+      taskId,
+      taskTitle,
+      taskDescription,
+    };
+
+    try {
+      const taskUpdated = await axios.put("/task/update", payload);
+      this.setState({
+        ...this.state,
+        data: {
+          ...this.state.data,
+          [taskUpdated.data.status]: [
+            taskUpdated.data,
+            ...this.state.data[taskUpdated.data.status].filter(
+              (item) => item._id !== taskUpdated.data._id
+            ),
+          ],
+        },
+      });
+
+      $("#taskModalEdit").modal("hide");
     } catch (error) {
       console.log("error :>> ", error);
     }
@@ -134,6 +165,13 @@ class ProjectDetail extends React.Component {
           ),
         },
       });
+    } else if ("edit") {
+      this.setState({
+        ...this.state,
+        taskId: value._id,
+        taskTitle: value.taskTitle,
+        taskDescription: value.taskDescription,
+      });
     }
   };
 
@@ -202,6 +240,17 @@ class ProjectDetail extends React.Component {
           onClick={this.handleCreateTask}
           idTarget="taskModal"
           title="New Task"
+        >
+          <FormTask
+            taskTitle={this.state.taskTitle}
+            taskDescription={this.state.taskDescription}
+            onChange={this.handleChangeForm}
+          />
+        </Modal>
+        <Modal
+          onClick={this.handleUpdateTask}
+          idTarget="taskModalEdit"
+          title="Edit Task"
         >
           <FormTask
             taskTitle={this.state.taskTitle}
