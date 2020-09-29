@@ -22,7 +22,10 @@ const TaskItem = ({ data, index, handleCtaButton }) => {
           <p className="task-item__content">{data.taskDescription}</p>
           <h6 className="task-item__owner">by {data.owner}</h6>
           <div className="task-item__cta">
-            <i className="fa fa-trash" />
+            <i
+              onClick={() => handleCtaButton(data, "delete")}
+              className="fa fa-trash"
+            />
             <i className="fa fa-pencil" />
           </div>
         </div>

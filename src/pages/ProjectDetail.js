@@ -115,9 +115,26 @@ class ProjectDetail extends React.Component {
     }
   };
 
-  handleCtaButton = (value, type) => {
-    console.log("value :>> ", value);
-    console.log("type :>> ", type);
+  handleCtaButton = async (value, type) => {
+    if (type === "delete") {
+      const resTaskDelete = await axios.delete(`/task/${value._id}`);
+
+      this.setState({
+        ...this.state,
+        data: {
+          ...this.state.data,
+          new: this.state.data.new.filter(
+            (item) => item._id !== resTaskDelete.data.taskId
+          ),
+          inProgress: this.state.data.inProgress.filter(
+            (item) => item._id !== resTaskDelete.data.taskId
+          ),
+          completed: this.state.data.completed.filter(
+            (item) => item._id !== resTaskDelete.data.taskId
+          ),
+        },
+      });
+    }
   };
 
   handleRestructureData = (data) => {
@@ -160,14 +177,20 @@ class ProjectDetail extends React.Component {
           }}
         >
           <DragDropContext onDragEnd={this.handleOnDragEnd}>
-            <Tasks handleCtaButton={this.handleCtaButton} id="new" data={this.state.data.new} />
             <Tasks
+              handleCtaButton={this.handleCtaButton}
+              id="new"
+              data={this.state.data.new}
+            />
+            <Tasks
+              handleCtaButton={this.handleCtaButton}
               id="inProgress"
               data={this.state.data.inProgress}
               isProgress
               label="In Progress"
             />
             <Tasks
+              handleCtaButton={this.handleCtaButton}
               id="completed"
               data={this.state.data.completed}
               isProgress

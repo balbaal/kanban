@@ -21,7 +21,7 @@ const Tasks = ({ isProgress, label, data, id, handleCtaButton }) => {
               dataTarget="#taskModal"
             />
           )}
-          <RenderItem handleCtaButton data={data} />
+          <RenderItem handleCtaButton={handleCtaButton} data={data} />
           {provided.placeholder}
         </div>
       )}

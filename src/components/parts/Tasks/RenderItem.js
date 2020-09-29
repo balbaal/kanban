@@ -6,7 +6,12 @@ const RenderItem = ({ data, handleCtaButton }) => {
     <>
       {data.map((task, i) => {
         return (
-          <TaskItem handleCtaButton key={task._id} data={task} index={i} />
+          <TaskItem
+            handleCtaButton={handleCtaButton}
+            key={task._id}
+            data={task}
+            index={i}
+          />
         );
       })}
     </>
