@@ -1,7 +1,7 @@
 import React from "react";
 import { Draggable } from "react-beautiful-dnd";
 
-const TaskItem = ({ data, index }) => {
+const TaskItem = ({ data, index, handleCtaButton }) => {
   return (
     <Draggable draggableId={data._id} index={index}>
       {(provided) => (
@@ -21,6 +21,10 @@ const TaskItem = ({ data, index }) => {
           </div>
           <p className="task-item__content">{data.taskDescription}</p>
           <h6 className="task-item__owner">by {data.owner}</h6>
+          <div className="task-item__cta">
+            <i className="fa fa-trash" />
+            <i className="fa fa-pencil" />
+          </div>
         </div>
       )}
     </Draggable>

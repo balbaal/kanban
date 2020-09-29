@@ -115,6 +115,11 @@ class ProjectDetail extends React.Component {
     }
   };
 
+  handleCtaButton = (value, type) => {
+    console.log("value :>> ", value);
+    console.log("type :>> ", type);
+  };
+
   handleRestructureData = (data) => {
     let dataRes = {
       new: [],
@@ -155,7 +160,7 @@ class ProjectDetail extends React.Component {
           }}
         >
           <DragDropContext onDragEnd={this.handleOnDragEnd}>
-            <Tasks id="new" data={this.state.data.new} />
+            <Tasks handleCtaButton={this.handleCtaButton} id="new" data={this.state.data.new} />
             <Tasks
               id="inProgress"
               data={this.state.data.inProgress}

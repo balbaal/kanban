@@ -3,7 +3,7 @@ import RenderItem from "./RenderItem";
 import { Button, LabelProgress } from "components/elements";
 import { Droppable } from "react-beautiful-dnd";
 
-const Tasks = ({ isProgress, label, data, id }) => {
+const Tasks = ({ isProgress, label, data, id, handleCtaButton }) => {
   return (
     <Droppable droppableId={id}>
       {(provided) => (
@@ -21,7 +21,7 @@ const Tasks = ({ isProgress, label, data, id }) => {
               dataTarget="#taskModal"
             />
           )}
-          <RenderItem data={data} />
+          <RenderItem handleCtaButton data={data} />
           {provided.placeholder}
         </div>
       )}
